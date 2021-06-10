@@ -1,0 +1,50 @@
+﻿@model BlogMVCDeneme.Models.Makale
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Makale</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MakaleBaslik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MakaleBaslik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Icerik)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Icerik)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EklenmeTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EklenmeTarihi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BlogMVCDeneme.Models.Makale>
+
+@{
+    ViewBag.Title = "YazarSayfa";
+}
+
+<h2>YazarSayfa</h2>
+
+<p>
+    @Html.ActionLink("Makale Yaz", "MakaleYaz")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Baslik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Icerik)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EklenmeTarihi)
+        </th>
+        <th>
+          Durum
+        </th>
+        <th>Dosya</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.User.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Baslik)
+        </td>
+        <td>
+            @Html.Raw(System.Web.HttpUtility.HtmlDecode(item.Icerik))
+            
+                @*@Html.DisplayFor(modelItem => item.Icerik)*@
+            
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EklenmeTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DurumAciklama)
+        </td>
+        <td>
+            <a href="@Url.Action("Download", "Home", new { file = Html.DisplayFor(modelItem => item.Dosya)})">@Html.DisplayFor(modelItem => item.Dosya)</a>
+           
+        </td>
+     <td></td>
+            
+    </tr>
+}
+
+</table>

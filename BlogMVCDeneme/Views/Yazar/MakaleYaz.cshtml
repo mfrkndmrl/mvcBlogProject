@@ -1,0 +1,56 @@
+﻿
+@model BlogMVCDeneme.ViewModels.MakeleYazmaEkrani
+
+@{
+    ViewBag.Title = "MakaleYaz";
+}
+
+<h2>Makale Yaz</h2>
+
+<form action="../Yazar/MakaleYaz" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2"> Kategori Seç</label>
+            <div class="col-md-10">
+                @Html.DropDownList("KategoriId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Kategori.Id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Makale.Baslik, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Makale.Baslik, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Makale.Baslik, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Makale.Icerik, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Makale.Icerik, new {htmlAttributes = new {@class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Makale.Icerik, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"> Etiket Yaz</label>
+            <input class="form-control" type="text" name="etiket" value="" />
+        </div>
+        <div class="form-group">
+            <label class="control-label col-md-2"> Dosya Seç</label>
+            <input type="file" name="yuklenecekDosya" class="form-control"/>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+</form>
+
+
+

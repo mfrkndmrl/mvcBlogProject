@@ -1,0 +1,101 @@
+﻿@model BlogMVCDeneme.Models.Yorum
+
+@{
+    ViewBag.Title = "YorumCevap";
+}
+
+<h2>YorumCevap</h2>
+
+<div>
+    <h4>Yorum</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.UstId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UstId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YorumMetni)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YorumMetni)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Soyad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Soyad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.YorumTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YorumTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MakaleId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MakaleId)
+        </dd>
+
+    </dl>
+</div>
+<table>
+    <form action="/Home/YorumCevap" method="post">
+        <tr>
+            <td>Adınız:</td>
+            <td><input type="text" name="ad" value="@ViewBag.Ad" /></td>
+        </tr>
+        <tr>
+            <td>Soyadınız:</td>
+            <td><input type="text" name="soyad" value="@ViewBag.Soyad" /></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" name="email" value="@ViewBag.Email" /></td>
+        </tr>
+        <tr>
+            <td>Yorumunuz:</td>
+            <td><input type="text" name="icerik" value="Yorumunuzu giriniz..." /></td>
+
+        </tr>
+        <tr>
+            <td><input type="hidden" name="makaleid" value="@ViewBag.id" /></td>
+        </tr>
+        <tr>
+            <td><input type="hidden" name="yorumid" value="@ViewBag.ustid" /></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Gönder" /></td>
+        </tr>
+
+    </form>
+</table>

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<BlogMVCDeneme.Models.MakaleEtiket>
+
+@{
+    ViewBag.Title = "AnaSayfa";
+}
+
+
+<h2>Makaleler</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Etiket.EtiketAd)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Makale.User.Ad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Etiket.EtiketAd)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Makale.User.Ad)
+        </td>
+        <td>
+            @Html.ActionLink("Git", "Makale", new { id=item.MakaleId }) 
+          
+        </td>
+    </tr>
+}
+
+</table>

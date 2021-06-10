@@ -1,0 +1,46 @@
+﻿@model IEnumerable<BlogMVCDeneme.ViewModels.KullanıcıEkle>
+
+@{
+    ViewBag.Title = "Yazarlarımız";
+}
+
+<h2>Yazarlarımız</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Ad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Soyad)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fotograf)
+        </th>
+       
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soyad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            <img src="~/Dosyalar/@item.Fotograf" width="100" height="100"/>
+        </td>
+        
+
+    </tr>
+}
+
+</table>

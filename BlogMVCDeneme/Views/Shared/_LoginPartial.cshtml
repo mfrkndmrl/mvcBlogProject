@@ -1,0 +1,63 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    
+    if(User.IsInRole("Admin"))
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                <li>@Html.ActionLink("Makale İzin", "Index", "Editor", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Tüm Makaleler", "TümMakaleGör", "Editor", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Kullanıcılar", "KullaniciListe", "Admin", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Makale Yaz", "MakaleYaz", "Yazar", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Sayfam", "YazarSayfa", "Yazar", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Çıkış</a></li>
+            </ul>
+        }
+
+    }
+    else if (User.IsInRole("Editör"))
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                <li>@Html.ActionLink("Makale İzin", "Index", "Editor", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Tüm Makaleler", "TümMakaleGör", "Editor", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Makale Yaz", "MakaleYaz", "Yazar", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Sayfam", "YazarSayfa", "Yazar", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Çıkış</a></li>
+            </ul>
+        }
+
+    }
+    else
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <ul class="nav navbar-nav navbar-right">
+                <li>@Html.ActionLink(User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                <li>@Html.ActionLink("Benim Sayfam", "YazarSayfa", "Yazar", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                <li>@Html.ActionLink("Makale Yaz", "MakaleYaz", "Yazar", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>  
+                <li><a href="javascript:document.getElementById('logoutForm').submit()">Çıkış</a></li>
+            </ul>
+        }
+    }
+
+}
+
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Yazar Ol", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Giriş Yap", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

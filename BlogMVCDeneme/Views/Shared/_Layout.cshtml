@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - KastBlog</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <!--Author: koddostu.com-->
+    <!--Licence: GNU GPL V2.0-->
+    <!--Name: Sitene Sosyal Medya Paylaşım Kodları-->
+    <input type="checkbox" id="kdfab1535" class="kdpfab" />
+    <div class="koddostu-com-paylas fab">
+        <a href="#" class="koddostu-paylas kd-facebook"></a>
+        <a href="#" class="koddostu-paylas kd-twitter"></a>
+        <a href="#" class="koddostu-paylas kd-pinterest"></a>
+        <a href="#" class="koddostu-paylas kd-whatsapp"></a>
+        <a href="#" class="koddostu-paylas kd-linkedin"></a>
+        <a href="#" class="koddostu-paylas kd-mail"></a>        
+        <a href="#" class="koddostu-paylas kd-googleplus"></a>      
+        <a href="#" class="koddostu-paylas kd-mailru"></a>
+        <a href="#" class="koddostu-paylas kd-odnok"></a>
+    </div>
+    <script>
+(function () {
+var a=document.createElement("link"); a.type="text/css";a.rel="stylesheet"; a.href="http://panel.koddostu.com/css/2.css";
+a.media="all";document.getElementsByTagName("head")[0].appendChild(a);}());
+    </script>
+    <script charset="iso-8859-9" type="text/javascript" src="http://www.koddostu.com/kdjs/dmca/koddostu-com-paylas.js?90"></script>
+    <script src="https://www.koddostu.com/duzelt.js?no=344"></script>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Blog Sayfamız", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Anasayfa", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Makaleler", "AnaSayfa", "Home")</li>
+                    <li>@Html.ActionLink("Yazarlar", "ListeAcik", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - MFD</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

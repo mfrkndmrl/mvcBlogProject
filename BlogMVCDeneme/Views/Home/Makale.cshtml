@@ -1,0 +1,86 @@
+﻿@model BlogMVCDeneme.ViewModels.MakaleYorumView
+
+@{
+    ViewBag.Title = "Makale";
+}
+
+<h2>
+
+    <td>
+        @Model.Makale.Baslik
+    </td>
+</h2>
+    <hr />
+
+    <td>
+        @*@Model.Makale.Icerik*@
+        @Html.Raw(System.Web.HttpUtility.HtmlDecode(Model.Makale.Icerik))
+       
+    </td>
+<br />
+<a href="@Url.Action("Download", "Home", new { file = ViewBag.dosya})">@Model.Makale.Dosya</a>
+
+
+
+
+
+<table class="table">
+    
+    @foreach (var yorum in Model.Yorumlar)
+    {
+        
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => yorum.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => yorum.YorumMetni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => yorum.YorumTarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => yorum.Ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => yorum.UstId)
+            </td>
+            <td>
+                @Html.ActionLink("Cevapla", "YorumCevap", new { id=yorum.Id ,idd=yorum.MakaleId})
+            </td>
+        </tr>
+    }
+
+</table>
+<table>
+    <form action="/Home/YorumYap" method="post">
+        <tr>
+            <td>Adınız:</td>
+            <td><input type="text" name="ad" value="@ViewBag.Ad" /></td>
+        </tr>
+        <tr>
+            <td>Soyadınız:</td>
+            <td><input type="text" name="soyad" value="@ViewBag.Soyad" /></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" name="email" value="@ViewBag.Email" /></td>
+        </tr>
+        <tr>
+            <td>Yorumunuz:</td>
+            <div class="editor-field">
+                <td><input type="text" name="icerik" value="Yorumunuzu giriniz..." /></td>
+            </div>
+        </tr>
+        <tr>
+            <td><input type="hidden" name="makaleid" value="@ViewBag.id" /></td>
+        </tr>
+        <tr>
+            <td><input type="hidden" name="yorumid" value="@ViewBag.ustid" /></td>
+        </tr>
+        <tr>
+            <td><input type="submit"  value="Gönder" /></td>
+        </tr>
+        
+    </form>
+</table>
